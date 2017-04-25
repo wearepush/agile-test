@@ -62,11 +62,13 @@ export default class Observer extends Component {
 
   measure = () => {
     const rect = this.node.getBoundingClientRect();
+    const viewport_width = document.documentElement.clientWidth;
+    const viewport_height = document.documentElement.clientHeight;
     this.handleMeasure({
       top: rect.top,
-      bottom: rect.bottom,
+      bottom: viewport_height - rect.bottom,
       left: rect.left,
-      right: rect.right,
+      right: viewport_width - rect.right,
       width: rect.right - rect.left,
       height: rect.bottom - rect.top
     });
